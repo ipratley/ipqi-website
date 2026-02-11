@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPQI Ltd — Algorithmic Trading</title>
+<meta name="description" content="IPQI Ltd — Systematic algorithmic trading across forex and commodities. UK-based. Fully automated.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0b0f;
+    --bg-card: #12131a;
+    --bg-card-hover: #181924;
+    --border: #1e2030;
+    --border-accent: #2a3050;
+    --text: #c8cad4;
+    --text-dim: #6b7094;
+    --text-bright: #e8eaf0;
+    --accent: #4a7cff;
+    --accent-dim: #2d4a8a;
+    --accent-glow: rgba(74, 124, 255, 0.08);
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.1);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 124, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 124, 255, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-bright);
+    letter-spacing: 3px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .nav-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 0 80px;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 300;
+    color: var(--text-bright);
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 strong {
+    font-weight: 600;
+  }
+  .hero p {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* ── METRICS BAR ── */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 60px 0;
+  }
+  .metric {
+    background: var(--bg-card);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .metric-value {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 6px;
+  }
+  .metric-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── SECTION ── */
+  section { padding: 60px 0; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  section h2 {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+  section h2 strong { font-weight: 600; }
+  section > .container > p {
+    color: var(--text-dim);
+    font-size: 15px;
+    max-width: 540px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+  }
+  .card-icon {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-icon::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  /* ── PRINCIPLES ── */
+  .principles {
+    list-style: none;
+    margin-top: 32px;
+  }
+  .principles li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .principles li:last-child { border-bottom: none; }
+  .p-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+  .principles h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-bright);
+    margin-bottom: 4px;
+  }
+  .principles p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  /* ── STATUS ── */
+  .status-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-dim);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+    border-radius: 100px;
+    padding: 8px 16px;
+    margin-top: 40px;
+  }
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .status-text {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 80px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
+  }
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .contact-info p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .contact-email {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
+  }
+  .contact-email:hover { border-color: var(--accent); }
+
+  /* Form */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text-bright);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--bg-card); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .submit-btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { opacity: 0.85; }
+
+  /* Success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .form-success.show { display: block; }
+  .form-success p {
+    font-size: 15px;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .form-success span {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-left {}
+  .footer-company {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .footer-reg {
+    font-size: 11px;
+    color: var(--text-dim);
+    opacity: 0.6;
+  }
+  .footer-disclaimer {
+    max-width: 420px;
+    font-size: 11px;
+    color: var(--text-dim);
+    opacity: 0.5;
+    line-height: 1.6;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.2s; }
+  .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 0 40px; }
+    .hero h1 { font-size: 28px; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    footer .container { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#" class="logo">IPQI<span>.</span></a>
+    <span class="nav-tag">Algorithmic Trading</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-label fade-in">Systematic. Automated. Disciplined.</div>
+    <h1 class="fade-in"><strong>Quantitative trading</strong><br>built for consistency</h1>
+    <p class="fade-in">IPQI Ltd operates a portfolio of proprietary trading algorithms across forex and commodities. Fully automated execution. Institutional-grade risk management. No human intervention in live markets.</p>
+    <div class="status-bar fade-in">
+      <div class="status-dot"></div>
+      <span class="status-text">Systems operational</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-value">8</div>
+      <div class="metric-label">Algorithms</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">24/5</div>
+      <div class="metric-label">Runtime</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">3</div>
+      <div class="metric-label">Asset Classes</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">&lt;5ms</div>
+      <div class="metric-label">Execution</div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-label">Infrastructure</div>
+    <h2>How it <strong>works</strong></h2>
+    <p>Each algorithm targets a specific market condition. Together they form an uncorrelated portfolio designed to perform across varying regimes.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">01</div>
+        <h3>Multi-Strategy Portfolio</h3>
+        <p>Independent algorithms covering trend-following, mean reversion, breakout, and momentum — each specialising in different market conditions and sessions.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">02</div>
+        <h3>Regime Detection</h3>
+        <p>Real-time market regime classification automatically enables and disables strategies based on current conditions. Trend algorithms don't run in ranging markets.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">03</div>
+        <h3>Autonomous Risk Control</h3>
+        <p>Three independent safety layers: per-algorithm circuit breakers, system-wide equity monitoring, and daily human oversight. The system protects capital autonomously.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">04</div>
+        <h3>Verified Performance</h3>
+        <p>All results tracked and independently verified through third-party platforms. No black boxes. Monte Carlo simulation validates forward-looking probability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Philosophy</div>
+    <h2>Operating <strong>principles</strong></h2>
+    <ul class="principles">
+      <li>
+        <span class="p-num">01</span>
+        <div>
+          <h4>Automation over intuition</h4>
+          <p>Every trading decision is made by code, not emotion. Human oversight monitors the system — it doesn't override it.</p>
+        </div>
+      </li>
+      <li>
+        <span class="p-num">02</span>
+        <div>
+          <h4>Capital preservation first</h4>
+          <p>Risk management is the primary function. Circuit breakers, position limits, and equity monitoring all prioritise protecting capital over capturing returns.</p>
+        </div>
+      </li>
+      <li>
+        <span class="p-num">03</span>
+        <div>
+          <h4>Evidence-based decisions</h4>
+          <p>No strategy runs live without statistical validation. Monte Carlo simulation, walk-forward testing, and minimum sample sizes gate every deployment.</p>
+        </div>
+      </li>
+      <li>
+        <span class="p-num">04</span>
+        <div>
+          <h4>Simple beats complex</h4>
+          <p>Robust systems use proven techniques. No black-box ML, no overfit parameters, no complexity for its own sake. Transparent logic that can be audited and explained.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2>Get in <strong>touch</strong></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>IPQI Ltd is currently in its validation phase, trading proprietary capital. We are not currently accepting external investment.</p>
+        <p>If you're interested in learning more about our approach, exploring future opportunities, or discussing algorithmic trading, we'd be happy to hear from you.</p>
+        <a href="mailto:ian@ipqi.co.uk" class="contact-email">ian@ipqi.co.uk</a>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqedenny" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label>Interest</label>
+            <select name="interest" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="updates">Receive updates</option>
+              <option value="investment">Future investment opportunities</option>
+              <option value="collaboration">Collaboration / partnerships</option>
+              <option value="learn">Learn more about our approach</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (optional)</label>
+            <textarea name="message" placeholder="Anything you'd like us to know"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <p>Message received.</p>
+          <span>We'll be in touch shortly.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-left">
+      <div class="footer-company">IPQI Ltd</div>
+      <div class="footer-reg">Registered in England & Wales</div>
+    </div>
+    <div class="footer-disclaimer">
+      IPQI Ltd trades proprietary capital only and does not provide financial advice, manage external funds, or offer investment services. Past performance is not indicative of future results. Trading derivatives carries significant risk of loss.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.classList.add('show');
+      }
+    } catch (err) {
+      form.submit();
+    }
+  });
+</script>
+
+</body>
+</html>
