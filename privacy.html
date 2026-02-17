@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPQI — Privacy Policy</title>
+<meta name="description" content="IPQI Ltd privacy policy. How we handle your data.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%230a0b0f'/><rect x='3' y='3' width='3' height='3' rx='0.5' fill='%23a78bfa' opacity='0.85'/><rect x='7' y='3' width='3' height='3' rx='0.5' fill='%23fbbf24' opacity='0.85'/><rect x='11' y='3' width='3' height='3' rx='0.5' fill='%23a78bfa' opacity='0.85'/><rect x='15' y='3' width='3' height='3' rx='0.5' fill='%23fbbf24' opacity='0.85'/><rect x='19' y='3' width='3' height='3' rx='0.5' fill='%23a78bfa' opacity='0.85'/><rect x='23' y='3' width='3' height='3' rx='0.5' fill='%23fbbf24' opacity='0.85'/><rect x='27' y='3' width='3' height='3' rx='0.5' fill='%23a78bfa' opacity='0.85'/><rect x='15' y='15' width='3' height='3' rx='0.5' fill='%23e8eaf0' opacity='1'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0b0f;
+    --bg-card: #12131a;
+    --border: #1e2030;
+    --text: #c8cad4;
+    --text-dim: #6b7094;
+    --text-bright: #e8eaf0;
+    --accent: #4a7cff;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 124, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 124, 255, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  nav { padding: 28px 0; border-bottom: 1px solid var(--border); }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-text { font-family: var(--mono); font-size: 18px; font-weight: 400; color: var(--text-bright); letter-spacing: 3px; }
+  .logo-text span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text-bright); }
+
+  .policy { padding: 80px 0 60px; }
+  .policy-label {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .policy-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+  .policy h1 { font-size: 32px; font-weight: 300; color: var(--text-bright); margin-bottom: 12px; letter-spacing: -0.5px; }
+  .policy h1 strong { font-weight: 600; }
+  .policy-date { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-bottom: 48px; }
+
+  .policy-section { margin-bottom: 40px; }
+  .policy-section h2 { font-size: 17px; font-weight: 500; color: var(--text-bright); margin-bottom: 12px; }
+  .policy-section p { font-size: 14px; color: var(--text-dim); line-height: 1.8; margin-bottom: 12px; }
+  .policy-section p:last-child { margin-bottom: 0; }
+  .policy-section a { color: var(--accent); text-decoration: none; }
+  .policy-section a:hover { text-decoration: underline; }
+
+  .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  .data-table th, .data-table td {
+    text-align: left; padding: 12px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table th { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+  .data-table td { color: var(--text-dim); line-height: 1.6; }
+
+  footer { border-top: 1px solid var(--border); padding: 40px 0; }
+  footer .container { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+  .footer-company { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.5px; }
+  .footer-disclaimer { max-width: 640px; font-size: 12px; color: #555770; line-height: 1.6; }
+
+  @media (max-width: 640px) {
+    .policy { padding: 48px 0 40px; }
+    .policy h1 { font-size: 24px; }
+    .data-table th, .data-table td { padding: 10px 8px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="logo-text">IPQI<span>.</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#platform">Platform</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="policy">
+  <div class="container">
+    <div class="policy-label">Legal</div>
+    <h1>Privacy <strong>Policy</strong></h1>
+    <div class="policy-date">Last updated: February 17, 2026</div>
+
+    <div class="policy-section">
+      <h2>Who we are</h2>
+      <p>IPQI Ltd is a company registered in England and Wales (Company No. 16998393). Registered office: Pilgrim House, Oxford Place, Plymouth, PL1 5AJ. We are the data controller for the personal data described in this policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>What data we collect</h2>
+      <p>We collect only the data you provide through our contact form:</p>
+      <table class="data-table">
+        <tr><th>Data</th><th>Purpose</th><th>Lawful Basis</th></tr>
+        <tr><td>Name</td><td>To address you in our reply</td><td>Legitimate interest</td></tr>
+        <tr><td>Email address</td><td>To respond to your enquiry</td><td>Legitimate interest</td></tr>
+        <tr><td>Interest category</td><td>To route your enquiry appropriately</td><td>Legitimate interest</td></tr>
+        <tr><td>Message content</td><td>To understand and respond to your enquiry</td><td>Legitimate interest</td></tr>
+      </table>
+      <p>We do not use cookies, analytics, tracking pixels, or any form of behavioural monitoring on this website. We do not collect data automatically.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>How your data is processed</h2>
+      <p>Contact form submissions are processed by Formspree, Inc., a US-based form handling service. Formspree acts as a data processor on our behalf. Their privacy policy is available at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
+      <p>By submitting the form, your data is transferred to Formspree's servers in the United States. This transfer is necessary to process your enquiry. Formspree processes data in accordance with standard contractual clauses.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>How long we keep your data</h2>
+      <p>We retain contact form submissions for up to 12 months from the date of submission. After this period, submissions are deleted. You may request earlier deletion at any time.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Who we share data with</h2>
+      <p>We do not sell, rent, or share your personal data with any third parties for marketing purposes. Your data is only shared with Formspree as described above, and accessed by IPQI Ltd staff to respond to your enquiry.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Your rights</h2>
+      <p>Under UK GDPR, you have the right to: access the personal data we hold about you; request correction of inaccurate data; request deletion of your data; object to processing of your data; and request a copy of your data in a portable format.</p>
+      <p>To exercise any of these rights, contact us using the details below. We will respond within 30 days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Contact</h2>
+      <p>For any privacy-related enquiries, contact IPQI Ltd at the registered office address above, or use the contact form on our <a href="/#contact">home page</a>.</p>
+      <p>If you are not satisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-company">IPQI Ltd &nbsp;&middot;&nbsp; Company No. 16998393 &nbsp;&middot;&nbsp; Registered in England &amp; Wales &nbsp;&middot;&nbsp; Pilgrim&nbsp;House,&nbsp;Oxford&nbsp;Place,&nbsp;Plymouth,&nbsp;PL1&nbsp;5AJ &nbsp;&middot;&nbsp; <a href="/privacy.html" style="color:#6b7094;text-decoration:none;">Privacy Policy</a></div>
+    <div class="footer-disclaimer">
+      Trading foreign exchange and other financial instruments carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. IPQI Ltd does not provide investment advice.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
